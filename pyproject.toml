@@ -9,7 +9,14 @@ readme = "README.md"
 python = "^3.11"
 fastapi = "^0.115.12"
 uvicorn = {extras = ["standard"], version = "^0.34.0"}
+aerich = "^0.8.2"
+tortoise-orm = "^0.24.2"
+asyncpg = "^0.30.0"
 
+[tool.aerich]
+tortoise_orm = "app.database.TORTOISE_ORM" 
+location = "./migrations"
+src_folder = "./."
 
 [build-system]
 requires = ["poetry-core"]
