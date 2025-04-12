@@ -12,6 +12,11 @@ uvicorn = {extras = ["standard"], version = "^0.34.0"}
 aerich = "^0.8.2"
 tortoise-orm = "^0.24.2"
 asyncpg = "^0.30.0"
+grpcio = "^1.71.0"
+grpcio-tools = "^1.71.0"
+
+[tool.poetry.group.dev.dependencies]
+grpcio-tools = "^1.71.0"
 
 [tool.aerich]
 tortoise_orm = "app.database.TORTOISE_ORM" 
