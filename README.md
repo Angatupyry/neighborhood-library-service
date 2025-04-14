@@ -1,6 +1,8 @@
 # Neighborhood Library Service
 
-A full-stack gRPC-based service for managing library members, books, and borrowing logic.
+This project is a simple microservice architecture for managing a digital library system. It uses **gRPC** for communication, **PostgreSQL** for persistence, and **Tortoise ORM** for database operations.
+
+Although gRPC is the main communication protocol used, **FastAPI** is included in the project structure for future REST API extensions and possible admin interfaces or monitoring tools.
 
 ---
 
@@ -20,7 +22,7 @@ Make sure you have Docker and Docker Compose installed.
 To start all services (gRPC server, client, PostgreSQL database, etc.):
 
 ```
-docker compose up --build
+make dev
 ```
 
 This will:
@@ -48,7 +50,7 @@ The client test script:
 To run the test manually:
 
 ```
-docker compose exec client poetry run python client/entire_flow.py
+make test
 ```
 
 You should see output for each step of the flow.
@@ -60,21 +62,7 @@ To verify the data directly in the database:
 4.1. Open a shell into the PostgreSQL container:
 
 ```
-docker compose exec db psql -U postgres -d library_db
-
-```
-
-4.2. Run SQL queries:
-
-```sql
-
-SELECT * FROM member;
-
-
-SELECT * FROM book;
-
-
-SELECT * FROM borrow;
+make database
 
 ```
 

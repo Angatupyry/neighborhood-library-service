@@ -53,13 +53,6 @@ async def main():
         except grpc.aio.AioRpcError as e:
             print(f"Expected failure on second borrow: {e.details()}")
 
-        # Return book
-        try:
-            return_response = await stub.ReturnBook(borrow_request)
-            print(f"Return book: {return_response.message}")
-        except grpc.aio.AioRpcError as e:
-            print(f"Error returning book: {e.details()}")
-
 
 if __name__ == "__main__":
     asyncio.run(main())
