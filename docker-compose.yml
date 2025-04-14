@@ -40,5 +40,15 @@ services:
     volumes:
       - .:/app
 
+  client:
+    build:
+      context: .
+    environment:
+      PYTHONPATH: /app
+    depends_on:
+      - grpc_server
+    volumes:
+      - .:/app
+
 volumes:
   postgres_data:
