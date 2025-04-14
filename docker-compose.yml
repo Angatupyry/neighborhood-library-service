@@ -27,6 +27,18 @@ services:
     volumes:
       - .:/app
 
+  grpc_server:
+    build: .
+    command: ["poetry", "run", "python", "app/grpc_server.py"]
+    environment:
+      PYTHONPATH: /app
+      DATABASE_URL: "postgres://postgres:postgres@db/library_service"
+    ports:
+      - "50051:50051"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
 
 volumes:
   postgres_data:

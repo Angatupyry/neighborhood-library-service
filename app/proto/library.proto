@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package library;
+
+service LibraryService {
+  rpc CreateMember (MemberRequest) returns (MemberResponse);
+  rpc CreateBook (BookRequest) returns (BookResponse);
+  rpc BorrowBook (BorrowRequest) returns (BorrowResponse);
+  rpc ReturnBook (ReturnRequest) returns (ReturnResponse);
+  rpc ListBorrowedBooks (ListBorrowedRequest) returns (ListBorrowedResponse);
+}
+
+message MemberRequest {
+  string first_name = 1;
+  string last_name = 2;
+  string email = 3;
+  string phone_number = 4;
+  string address = 5;
+}
+
+message MemberResponse {
+  int32 id = 1;
+  string message = 2;
+}
+
+message BookRequest {
+  string title = 1;
+  string author = 2;
+  string isbn = 3;
+}
+
+message BookResponse {
+  int32 id = 1;
+  string message = 2;
+}
+
+message BorrowRequest {
+  int32 member_id = 1;
+  int32 book_id = 2;
+}
+
+message BorrowResponse {
+  int32 id = 1;
+  string message = 2;
+}
+
+message ReturnRequest {
+  int32 borrow_id = 1;
+}
+
+message ReturnResponse {
+  string message = 1;
+}
+
+message ListBorrowedRequest {
+  int32 member_id = 1;
+}
+
+message BorrowedBook {
+  int32 book_id = 1;
+  string title = 2;
+  string author = 3;
+  string borrow_date = 4;
+}
+
+message ListBorrowedResponse {
+  repeated BorrowedBook books = 1;
+}
